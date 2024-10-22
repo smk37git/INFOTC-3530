@@ -44,7 +44,7 @@ fi
 # Task 2: Zenity Input for Malicious IP Addresses
 # Use Zenity to allow the user to enter a list of known malicious IP addresses.
 # The user will enter the IPs as a comma-separated list (e.g., 192.168.1.1,10.10.10.10).
-malicious_ips=$(zenity --entry --title="Input Malicious IPs" --text="Enter malicious IP addresses:")
+malicious_ips=$(zenity --entry --title="Enter Malicious IPs" --text="Enter malicious IP addresses:")
 
 # Check if the user provided any IP addresses
 # If no IPs were entered (i.e., malicious_ips is empty), display an error message and exit.
@@ -62,7 +62,7 @@ malicious_pattern=$(echo "$malicious_ips" | sed 's/,/|/g')
 # Use grep to find all lines with the word 'DENY' and awk to extract the source IP address.
 # Then sort the IPs and count how many times each one appears (i.e., how many times it was denied).
 # Finally, sort the counts in descending order and store the result in denied_attempts.
-denied_attempts=$(grep 'DENY' "$log_file" | awk '{print $NF}' | sort | uniq -c | sort -nr)
+denied_attempts=$(grep 'DENY' "$log_file" | awk '{print $IP}' | sort | uniq -c | sort -nr)
 
 # Task 4: Flag Frequent Access Attempts
 # We will identify source IPs that have been denied more than 5 times.
