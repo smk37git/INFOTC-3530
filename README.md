@@ -1,5 +1,5 @@
 # INFOTC-3530
-Sebasian Main<br >
+Sebastian Main<br >
 (UNIX Operating System)<br >
 (Language = Bash)<br >
 
